@@ -1,7 +1,3 @@
-Sure! Here's a sample `README.md` for your **"0x00. ES6 Basics"** directory in the ALX Backend JavaScript project:
-
----
-
 # 0x00. ES6 Basics
 
 ## Description
