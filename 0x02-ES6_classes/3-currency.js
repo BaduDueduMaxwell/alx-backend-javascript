@@ -22,12 +22,14 @@ export default class Currency {
     this._name = this._validateString(value, 'Name');
   }
 
-  static _validateString(value, attributeName) {
+  /* eslint-disable class-methods-use-this */
+  _validateString(value, attributeName) {
     if (typeof value !== 'string') {
       throw new TypeError(`${attributeName} must be a string`);
     }
     return value;
   }
+  /* eslint-disable class-methods-use-this */
 
   // Method to display full currency
   displayFullCurrency() {
