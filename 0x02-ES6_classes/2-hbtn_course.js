@@ -20,15 +20,15 @@ export default class HolbertonCourse {
 
   // Setters
   set name(value) {
-    return this._validateString(value, 'Name');
+    this.name = this._validateString(value, 'Name');
   }
 
   set length(value) {
-    return this._validateNumber(value, 'Length');
+    this.length = this._validateNumber(value, 'Length');
   }
 
   set students(value) {
-    return this._validateStudentsArray(value, 'Students');
+    this.students = this._validateStudentsArray(value, 'Students');
   }
 
   // Private validation methods
