@@ -22,13 +22,13 @@ export default class Currency {
     this._name = this._validateString(value, 'Name');
   }
 
-  _validateString(value, attributeName) {
+  static _validateString(value, attributeName) {
     if (typeof value !== 'string') {
       throw new TypeError(`${attributeName} must be a string`);
     }
     return value;
   }
-  
+
   // Method to display full currency
   displayFullCurrency() {
     return `${this.name} (${this.code})`;
