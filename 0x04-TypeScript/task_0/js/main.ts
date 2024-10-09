@@ -1,9 +1,9 @@
 // Define the student interface
 interface Student {
-  firstName: string,
-  lastName: string,
-  age: number,
-  location: string,
+  firstName: string;
+  lastName: string;
+  age: number;
+  location: string;
 }
 
 // Create two student objects
