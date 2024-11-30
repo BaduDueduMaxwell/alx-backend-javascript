@@ -4,6 +4,7 @@ const readline = require('readline');
 
 const app = express();
 
+// Function to count students in the database
 const countStudents = (databasePath) => new Promise((resolve, reject) => {
   const students = { CS: [], SWE: [] };
 
@@ -19,7 +20,7 @@ const countStudents = (databasePath) => new Promise((resolve, reject) => {
   });
 
   rl.on('line', (line, idx) => {
-    if (idx === 0) return null; // Explicitly return null
+    if (idx === 0 || line.trim() === '') return; // Skip the header and empty lines
     const fields = line.split(',');
     const firstName = fields[0];
     const field = fields[3];
@@ -39,12 +40,14 @@ const countStudents = (databasePath) => new Promise((resolve, reject) => {
   });
 });
 
+// Route for the root endpoint
 app.get('/', (req, res) => {
   res.send('Hello Holberton School!');
 });
 
+// Route for /students endpoint
 app.get('/students', (req, res) => {
-  const databasePath = process.argv[2];
+  const databasePath = process.argv[2]; // Get database path from command-line arguments
 
   if (!databasePath) {
     return res.status(400).send('Database path not provided');
@@ -56,8 +59,11 @@ app.get('/students', (req, res) => {
       const csStudents = students.CS.join(', ');
       const sweStudents = students.SWE.join(', ');
 
-      return res.send( // Add return here
-        `This is the list of our students\nNumber of students: ${totalStudents}\nNumber of students in CS: ${students.CS.length}. List: ${csStudents}\nNumber of students in SWE: ${students.SWE.length}. List: ${sweStudents}`,
+      return res.send(
+        'This is the list of our students\n'
+          + `Number of students: ${totalStudents}\n`
+          + `Number of students in CS: ${students.CS.length}. List: ${csStudents}\n`
+          + `Number of students in SWE: ${students.SWE.length}. List: ${sweStudents}`,
       );
     })
     .catch((error) => {
@@ -65,6 +71,7 @@ app.get('/students', (req, res) => {
     });
 });
 
+// Start the server
 const PORT = 1245;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
