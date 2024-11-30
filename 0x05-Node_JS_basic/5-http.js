@@ -1,10 +1,9 @@
 const http = require('http');
 const fs = require('fs');
-const path = require('path');
 
 /**
  * Reads a CSV file asynchronously and parses student data.
- * 
+ *
  * @param {string} databasePath - Path to the CSV file.
  * @returns {Promise<string>} - A promise resolving to formatted student data.
  */
@@ -16,8 +15,8 @@ function countStudents(databasePath) {
         return;
       }
 
-      const lines = data.split('\n').filter((line) => line.trim() !== ''); // Remove empty lines
-      const students = lines.slice(1); // Exclude header line
+      const lines = data.split('\n').filter((line) => line.trim() !== '');
+      const students = lines.slice(1);
 
       const summary = { total: 0, fields: {} };
 

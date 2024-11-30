@@ -1,32 +1,32 @@
-const fs = require("fs");
+const fs = require('fs');
 
 function countStudents(path) {
   return new Promise((resolve, reject) => {
-    fs.readFile(path, "utf8", (err, data) => {
+    fs.readFile(path, 'utf8', (err, data) => {
       if (err) {
-        reject(new Error("Cannot load the database"));
+        reject(new Error('Cannot load the database'));
         return;
       }
 
       try {
         const lines = data
           .trim()
-          .split("\n")
+          .split('\n')
           .filter((line) => line.length > 0);
 
         if (lines.length === 0) {
-          reject(new Error("Database is empty"));
+          reject(new Error('Database is empty'));
           return;
         }
 
-        const header = lines[0].split(",");
+        const header = lines[0].split(',');
         const rows = lines.slice(1);
 
         const studentsByField = {};
         let totalStudents = 0;
 
         rows.forEach((row) => {
-          const values = row.split(",");
+          const values = row.split(',');
 
           if (values.length !== header.length) {
             return;
@@ -47,13 +47,13 @@ function countStudents(path) {
           console.log(
             `Number of students in ${field}: ${
               students.length
-            }. List: ${students.join(", ")}`
+            }. List: ${students.join(', ')}`,
           );
         }
 
         resolve();
       } catch (error) {
-        reject(new Error("Cannot load the database"));
+        reject(new Error('Cannot load the database'));
       }
     });
   });
