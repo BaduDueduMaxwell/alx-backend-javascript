@@ -1,4 +1,6 @@
+/* eslint-disable no-unused-vars */
 const { readdirSync } = require('fs');
+/* eslint-disable no-unused-vars */
 const http = require('http');
 
 // Create an HTTP server
